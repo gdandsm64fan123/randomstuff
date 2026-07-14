@@ -12,7 +12,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 -- window creation
 local Window = Fluent:CreateWindow({
     Title = "cube64's universal script",
-    SubTitle = "subtitle here",
+    SubTitle = "delta compatible!",
     TabWidth = 160,
     Size = UDim2.fromOffset(480, 260),
     Acrylic = false,
@@ -48,7 +48,7 @@ Main:AddButton({
 	Title = "Infinite Yield",
 	Description = "a true classic of exploits",
 	Callback = function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 	end
 })
 -- Dex
@@ -63,7 +63,7 @@ Main:AddButton({
 Fluent:Notify({
     Title = "script successfully loaded",
     Content = "all systems go",
-    Duration = 20
+    Duration = 10
 })
 
 -- saveman and interfaceman stuff
