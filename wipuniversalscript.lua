@@ -1,7 +1,6 @@
 local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
-
 local IsOnMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UserInputService:GetPlatform())
 
 -- load fluent
@@ -25,7 +24,10 @@ local Main = Window:AddTab({
 	Title = "Main",
 	Icon = "globe"
 })
-   
+   local GameSpecific = Window:AddTab({
+	Title = "Game specific",
+	Icon = "globe"
+})
 -- Cobalt Button
 Main:AddButton({
 	Title = "Cobalt",
@@ -36,7 +38,7 @@ Main:AddButton({
 })
 
 -- brainrot police
-Main:AddButton({
+GameSpecific:AddButton({
 	Title = "Brainrot Police (multi-game support)",
 	Description = "by Vaehz (hes so cool gng",
 	Callback = function()
@@ -58,6 +60,27 @@ Main:AddButton({
 	Callback = function()
 		loadstring(game:HttpGet("https://obj.wearedevs.net/2/scripts/Dex%20Explorer.lua"))()
 	end
+})
+-- speed clicker hax
+local Running = false
+
+GameSpecific:AddButton({
+    Title = "Speed Clicker Speed Farm",
+    Description = "Start/Stop Speed Farm",
+    Callback = function()
+        Running = not Running
+
+        if Running then
+            task.spawn(function()
+                local Event = game:GetService("ReplicatedStorage").IncreaseSpeed
+
+                while Running do
+                    Event:FireServer()
+                    task.wait(0.005)
+                end
+            end)
+        end
+    end
 })
 -- load notif
 Fluent:Notify({
