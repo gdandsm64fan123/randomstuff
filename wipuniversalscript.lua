@@ -22,14 +22,18 @@ local Window = Fluent:CreateWindow({
 -- Add tabs
 local Main = Window:AddTab({
 	Title = "Main",
-	Icon = "globe"
+	Icon = "menu"
 })
-   local GameSpecific = Window:AddTab({
+local GameSpecific = Window:AddTab({
 	Title = "Game specific",
-	Icon = "globe"
+	Icon = "gamepad"
+})
+local Debuggers = Window:AddTab({
+	Title = "Debuggers",
+	Icon = "code"
 })
 -- Cobalt Button
-Main:AddButton({
+Debuggers:AddButton({
 	Title = "Cobalt",
 	Description = "very popular spy",
 	Callback = function()
@@ -86,7 +90,7 @@ GameSpecific:AddButton({
 Fluent:Notify({
     Title = "script successfully loaded",
     Content = "all systems go",
-    Duration = 10
+    Duration = 3
 })
 
 -- saveman and interfaceman stuff
