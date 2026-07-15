@@ -1,37 +1,23 @@
-local UserInputService = game:GetService("UserInputService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-local IsOnMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UserInputService:GetPlatform())
-
 -- load fluent
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
-
+local Fluent = loadstring(game:HttpGet(
+    "https://github.com/StyearX/Fluent-Modded/releases/download/Fluent/FluentPro"
+))()
 -- window creation
 local Window = Fluent:CreateWindow({
-    Title = "cube64's universal script",
-    SubTitle = "delta compatible!",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(480, 260),
-    Acrylic = false,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl
+    Title       = "cube64's gui",
+    SubTitle    = "now with a new look!",
+    TabWidth    = 160,
+    Size        = UDim2.fromOffset(640, 280),
+    Acrylic     = true,
+    Theme       = "AMOLED",
+    MinimizeKey = Enum.KeyCode.LeftControl,
+    Search      = true,
 })
 
--- Add tabs
-local Main = Window:AddTab({
-	Title = "Main",
-	Icon = "menu"
-})
-local GameSpecific = Window:AddTab({
-	Title = "Game specific",
-	Icon = "gamepad"
-})
-local Debuggers = Window:AddTab({
-	Title = "Debuggers",
-	Icon = "code"
-})
+local Main = Window:AddTab({ Title = "Main", Icon = "solar/home-bold" })
+local GameSpecific = Window:AddTab({ Title = "Game specific", Icon = "gamepad" })
+local Debuggers = Window:AddTab({ Title = "Debuggers", Icon = "code" })
+local Settings = Window:AddTab({ Title = "Settings (WIP)", Icon = "settings" })
 -- Cobalt Button
 Debuggers:AddButton({
 	Title = "Cobalt",
@@ -39,6 +25,41 @@ Debuggers:AddButton({
 	Callback = function()
 		loadstring(game:HttpGet("https://github.com/notpoiu/cobalt/releases/latest/download/Cobalt.luau"))()
 	end
+})
+Debuggers:AddButton({
+	Title = "Debug Tab Test",
+	Description = "Test",
+	Callback = function()
+	end
+})
+Settings:AddButton({
+	Title = " Settings1",
+	Description = "Setting 1",
+	Callback = function()
+	end
+})
+Settings:AddButton({
+	Title = " Settings2",
+	Description = "Setting 2",
+	Callback = function()
+	end
+})
+Settings:AddButton({
+	Title = " Settings3",
+	Description = "Setting 3",
+	Callback = function()
+	end
+})
+Settings:AddDropdown("MyDropdown", {
+    Title                 = "Choose Theme (non-functional as of now)",
+    Icon                  = "solar/list-bold",
+    Values                = { "Theme1", "Theme2", "Theme3" },
+    Default               = "Theme1",
+    Multi                 = false,
+    DropdownOutsideWindow = true,
+    Callback              = function(value)
+        print(value)
+    end,
 })
 
 -- brainrot police
